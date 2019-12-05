@@ -11,7 +11,7 @@
     "@nestjs/passport": "6.1.1",
     "@nestjs/platform-express": "6.10.6",
     "@nestjs/typeorm": "6.2.0",
-    "apollo-server-express": "2.9.12",
+    "apollo-server-express": "2.9.13",
     "dotenv": "8.2.0",
     "passport": "0.4.0",
     "passport-jwt": "4.0.0",
