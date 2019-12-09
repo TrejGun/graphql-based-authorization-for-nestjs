@@ -13,7 +13,7 @@
     "@nestjs/typeorm": "6.2.0",
     "apollo-server-express": "2.9.13",
     "dotenv": "8.2.0",
-    "passport": "0.4.0",
+    "passport": "0.4.1",
     "passport-jwt": "4.0.0",
     "pg": "7.14.0",
     "rxjs": "6.5.3",
