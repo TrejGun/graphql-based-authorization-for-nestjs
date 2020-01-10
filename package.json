@@ -15,7 +15,7 @@
     "dotenv": "8.2.0",
     "passport": "0.4.1",
     "passport-jwt": "4.0.0",
-    "pg": "7.17.0",
+    "pg": "7.17.1",
     "rxjs": "6.5.4",
     "type-graphql": "0.17.6",
     "typeorm": "0.2.22",
