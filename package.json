@@ -20,7 +20,7 @@
     "type-graphql": "0.17.6",
     "typeorm": "0.2.22",
     "typeorm-naming-strategies": "1.1.0",
-    "uuid": "3.3.3"
+    "uuid": "3.4.0"
   },
   "devDependencies": {
     "@nestjs/testing": "6.10.14",
