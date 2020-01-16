@@ -39,7 +39,7 @@
     "ts-jest": "24.3.0",
     "ts-node": "8.6.2",
     "tsc-watch": "4.0.0",
-    "typescript": "3.7.4"
+    "typescript": "3.7.5"
   },
   "license": "MIT",
   "main": "./dist/index.js",
