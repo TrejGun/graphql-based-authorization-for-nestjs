@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@nestjs/testing": "6.11.7",
-    "@trejgun/eslint-config": "0.0.2",
+    "@trejgun/eslint-config": "0.0.7",
     "@types/express": "4.17.2",
     "@types/jest": "25.1.2",
     "@types/node": "12.12.27",
