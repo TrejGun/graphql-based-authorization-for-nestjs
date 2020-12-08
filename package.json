@@ -22,7 +22,7 @@
     "rxjs": "6.6.3",
     "typeorm": "0.2.29",
     "typeorm-naming-strategies": "2.0.0",
-    "uuid": "8.3.1"
+    "uuid": "8.3.2"
   },
   "devDependencies": {
     "@nestjs/testing": "7.5.5",
