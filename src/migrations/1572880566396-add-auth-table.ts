@@ -1,6 +1,5 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-
 export class AddAuthTable1572880566396 implements MigrationInterface {
   public tableName = "test.auth";
 

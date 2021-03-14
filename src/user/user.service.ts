@@ -1,12 +1,11 @@
 import {createHash} from "crypto";
 import {FindConditions, Repository} from "typeorm";
 
-import {Injectable, ConflictException} from "@nestjs/common";
+import {ConflictException, Injectable} from "@nestjs/common";
 import {InjectRepository} from "@nestjs/typeorm";
 
 import {UserEntity} from "./user.entity";
 import {IUserCreateFields} from "./interfaces";
-
 
 @Injectable()
 export class UserService {
@@ -33,28 +32,23 @@ export class UserService {
   }
 
   public async create(data: IUserCreateFields): Promise<UserEntity> {
-    let user = await this.findOne({email: data.email});
+    let userEntity = await this.findOne({email: data.email});
 
-    if (user) {
+    if (userEntity) {
       throw new ConflictException();
     }
 
-    user = await this.userEntityRepository
+    userEntity = await this.userEntityRepository
       .create({
         ...data,
         password: this.createPasswordHash(data.password, data.email),
       })
       .save();
 
-    delete user.password;
-
-    return user;
+    return userEntity;
   }
 
   private createPasswordHash(password: string, salt: string): string {
-    return createHash("sha256")
-      .update(password)
-      .update(salt)
-      .digest("hex");
+    return createHash("sha256").update(password).update(salt).digest("hex");
   }
 }

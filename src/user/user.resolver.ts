@@ -6,7 +6,6 @@ import {UserEntity} from "./user.entity";
 import {UserService} from "./user.service";
 import {UserListType, UserType} from "./types";
 
-
 @Resolver()
 export class UserResolver {
   constructor(private readonly userService: UserService) {}
@@ -16,10 +15,9 @@ export class UserResolver {
     return user;
   }
 
-  @Roles(UserRole.Admin)
+  @Roles(UserRole.ADMIN)
   @Query(_returns => UserListType)
   public listUsers(): Promise<UserListType> {
     return this.userService.findAndCount().then(([list, count]) => ({list, count}));
   }
-
 }

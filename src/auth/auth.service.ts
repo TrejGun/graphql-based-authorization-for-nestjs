@@ -20,13 +20,13 @@ export class AuthService {
   ) {}
 
   public async login(data: ILoginFields): Promise<IAuth> {
-    const user = await this.userService.getByCredentials(data.email, data.password);
+    const userEntity = await this.userService.getByCredentials(data.email, data.password);
 
-    if (!user) {
+    if (!userEntity) {
       throw new UnauthorizedException();
     }
 
-    return this.loginUser(user);
+    return this.loginUser(userEntity);
   }
 
   public async delete(where: FindConditions<AuthEntity>): Promise<DeleteResult> {

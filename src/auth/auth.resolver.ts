@@ -32,7 +32,7 @@ export class AuthResolver {
   @Public()
   @Mutation(_returns => AuthType)
   async signup(@Args("input") data: UserCreateInputType): Promise<IAuth> {
-    const user = await this.userService.create(data);
-    return this.authService.loginUser(user);
+    const userEntity = await this.userService.create(data);
+    return this.authService.loginUser(userEntity);
   }
 }

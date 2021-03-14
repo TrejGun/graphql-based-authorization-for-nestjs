@@ -9,7 +9,6 @@ import {accessTokenExpiresIn} from "./auth.constants";
 import {JwtStrategy} from "./strategies";
 import {TypeOrmConfigService} from "../typeorm.options";
 
-
 describe("AuthService", () => {
   let service: AuthService;
 

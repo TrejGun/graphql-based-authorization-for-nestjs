@@ -1,6 +1,5 @@
 import {config} from "dotenv";
 
-
 config();
 
 // This namespace redefines one from @types/node to reflect values from .env

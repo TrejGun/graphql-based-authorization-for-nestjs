@@ -1,9 +1,6 @@
-import {Observable} from "rxjs";
-import {ExecutionContext, Injectable, CanActivate} from "@nestjs/common";
-import {GqlExecutionContext} from "@nestjs/graphql";
+import {CanActivate, ExecutionContext, Injectable, UnauthorizedException} from "@nestjs/common";
 import {Reflector} from "@nestjs/core";
 import {AuthGuard} from "@nestjs/passport";
-import {Request} from "express";
 
 @Injectable()
 export class JwtGuard extends AuthGuard("jwt") implements CanActivate {
@@ -11,17 +8,18 @@ export class JwtGuard extends AuthGuard("jwt") implements CanActivate {
     super();
   }
 
-  getRequest(context: ExecutionContext): Request {
-    return GqlExecutionContext.create(context).getContext().req;
-  }
+  public async canActivate(context: ExecutionContext): Promise<boolean> {
+    // `super` has to be called to set `user` on `request`
+    // see https://github.com/nestjs/passport/blob/master/lib/auth.guard.ts
+    return (super.canActivate(context) as Promise<boolean>).catch(e => {
+      const isPublicHandler = this.reflector.get<boolean>("isPublic", context.getHandler());
+      const isPublicClass = this.reflector.get<boolean>("isPublic", context.getClass());
 
-  public canActivate(context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean> {
-    const isPublic = this.reflector.get<boolean>("isPublic", context.getHandler());
+      if (isPublicHandler || isPublicClass) {
+        return true;
+      }
 
-    if (isPublic) {
-      return true;
-    }
-
-    return super.canActivate(context);
+      throw new UnauthorizedException(e.message);
+    });
   }
 }

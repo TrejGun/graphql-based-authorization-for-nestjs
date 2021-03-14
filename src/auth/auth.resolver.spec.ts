@@ -11,7 +11,6 @@ import {accessTokenExpiresIn} from "./auth.constants";
 import {JwtStrategy} from "./strategies";
 import {TypeOrmConfigService} from "../typeorm.options";
 
-
 describe("AuthResolver", () => {
   let resolver: AuthResolver;
 
